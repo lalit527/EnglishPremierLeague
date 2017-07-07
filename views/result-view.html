@@ -1,0 +1,57 @@
+<!--main container div-->
+<div class="container-main">
+	<div class="container-main" ng-controller="leagueController as leagueCtrl">
+<!-- Testing Filters  -->
+<div class="container-fluid">
+  <form name="searchResult" >
+    <div class="row">
+	  <div class="col-xs-12">	
+		<select class="col-xs-12" ng-change="leagueCtrl.searchResult(leagueCtrl.name)" ng-model="leagueCtrl.name" ng-options="x for x in leagueCtrl.searchYear">
+		</select>
+	  </div>
+	  <div class="col-xs-12">
+		<select class="col-xs-12" ng-model="leagueCtrl.teamName" ng-options="z for z in leagueCtrl.searchTeam" ng-change="leagueCtrl.changeCount()">
+		</select>{{teamName}}
+	  </div>
+	  <div class="col-xs-12" ng-show="leagueCtrl.teamName!='ALL'">
+		<select class="col-xs-12" ng-model="leagueCtrl.resultName"  ng-show="leagueCtrl.teamName" ng-options="y for y in leagueCtrl.resultData"  ng-change="leagueCtrl.changeCount()">
+		</select>
+	  </div>
+	  <div class="col-xs-12">
+		<select class="col-xs-12" ng-model="leagueCtrl.resultMatch"  ng-options="a for a in leagueCtrl.searchMatch" ng-change="leagueCtrl.changeCount()">
+		</select>{{resultMatch}}
+	  </div>
+	</div>
+  </form>
+</div>
+
+<!-- Testing Filter Ends  -->
+	<div class="container-fluid">
+		{{leagueCtrl.leagueResult.name}}
+		<hr/>
+		<ul id="main-con-ul"> 
+		  
+			<div ng-repeat="matches in leagueCtrl.leagueResult.rounds  | filter:{name:(leagueCtrl.resultMatch=='ALL' ? leagueCtrl.leagueResult.rounds.name : leagueCtrl.resultMatch)} : true">
+			    <h2 ng-show="leagueCtrl.resultMatch!='ALL'">{{matches.name}}</h2>
+				<div ng-repeat="matchDay in matches.matches | filter:(leagueCtrl.teamName=='ALL' ? '-' : leagueCtrl.teamName) | showByScore:leagueCtrl.teamName:leagueCtrl.resultName">	
+				  <div class="row">
+				   <div class="col-xs-12 date">
+					<h3 ng-if="leagueCtrl.teamName=='ALL'">{{matchDay.date | dateRepeat:matchDay.date | date:medium}}</h3>
+					<h3 ng-if="leagueCtrl.teamName!=='ALL'">{{matchDay.date  | date:medium}}</h3>
+				   </div>
+				  </div>
+					<a href="#match-details/{{matchDay.id}}">
+					<div class="team-name row">
+					  <div class="col-xs-5 col-sm-5 team1" id="team1-details">{{matchDay.team1.name}} </div> 
+					  <div class='col-xs-1 score col-sm-2'> {{matchDay.score1}} - {{matchDay.score2}} </div>
+					  <div class="col-xs-4 col-sm-4 team2" id="team2-details">{{matchDay.team2.name}} </div>
+					</div>
+				    </a>
+				</div>
+			</div>
+		  
+		</ul>
+	   </div>
+	</div>
+</div>
+	<!--main container div ends-->

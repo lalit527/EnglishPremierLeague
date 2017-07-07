@@ -1,0 +1,44 @@
+        <!--standings-table Starts-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="table-responsive ">
+                        <table class="table table-condensed standing-table">
+                            <thead>
+                                <tr>
+                                    <th>Team</th>
+                                    <th>P</th>
+                                    <th>W</th>
+                                    <th>L</th>
+                                    <th>D</th>
+                                    <th>F</th>
+                                    <th>A</th>
+                                    <th>GD</th>
+                                    <th>Pts</th>
+                                    <th>Form</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="(key, values) in leagueCtrl.standing">
+                                    <td>{{values.name}}</td>
+                                    <td>{{values.played}}</td>
+                                    <td>{{values.won}}</td>
+                                    <td>{{values.lost}}</td>
+                                    <td>{{values.draw}}</td>
+                                    <td>{{values.goalScored}}</td>
+                                    <td>{{values.goalAgainst}}</td>
+                                    <td>{{values.goalScored - values.goalAgainst}}</td>
+                                    <!--<td>{{values.won*3 + values.draw*1}}</td>-->
+									<td>{{values.points}}</td>
+                                    <td>{{values.form | limitTo:-10 | arrayToString}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--standing-table Ends-->
+    </div>
+    <!--ending of controller div-->
+    
