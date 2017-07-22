@@ -1,5 +1,5 @@
 //controller for result view
-leagueApp.controller('leagueController', ['$http', 'tableStanding', 'addIdResponse','changeArray', function($http, tableStanding, addIdResponse, changeArray){
+leagueApp.controller('leagueController', ['$scope','$timeout','$http', 'tableStanding', 'addIdResponse','changeArray', 'sortArrayFactory', function($scope, $timeout, $http, tableStanding, addIdResponse, changeArray, sortArrayFactory){
       var main = this;
 	  this.name = "2015-16";
 	  this.searchYear = ["2012-13", "2013-14", "2014-15", "2015-16"];
@@ -8,7 +8,23 @@ leagueApp.controller('leagueController', ['$http', 'tableStanding', 'addIdRespon
 	  this.teamName = 'ALL';
 	  this.resultName = 'ALL';
 	  this.resultMatch = 'ALL';
-	  this.changeCount=function(){
+      main.valueCheck = 'NO';
+      this.testData = ['NO','YES'];
+      main.checkChange = main.valueCheck;
+      main.sortByMacth = function(ele, val){
+      	//console.log(main.valueCheck);
+      	//main.changeCount(); 
+      	if((main.valueCheck != main.checkChange) ){
+      		main.checkChange = main.valueCheck;
+      		var x  = sortArrayFactory.sortResponse(main.leagueResult);
+            
+      		main.leagueResult = x;
+      		//console.log(JSON.stringify(x));
+              
+      	}
+      	return false;
+      }
+	  main.changeCount=function(){
 	    changeArray.emptyArray();
 	  }
 	  this.changeCount();
@@ -64,4 +80,5 @@ leagueApp.controller('matchDetailController', ['addIdResponse', '$timeout', 'get
 	 ////console.log('log'+JSON.stringify(main.matchDetail));
 	 }, 1000);
 }]);
+
 

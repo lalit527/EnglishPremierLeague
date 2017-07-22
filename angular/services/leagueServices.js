@@ -278,3 +278,43 @@ leagueApp.factory('getMatchDetail', function(){
 	    getDetailById: getDetailById
 	 }
 });
+
+
+leagueApp.factory('sortArrayFactory', function(){
+     var main = this;
+	 var sortResponse = function(object){
+	 	 var newObject = object;
+         var testArr = [];
+         var roudArr = [];
+         var count
+	     newObject['rounds'] = object.rounds.reverse();
+
+	     for(var i=(newObject.rounds.length)-1; i>=0; i--){
+			 //testArr.push();
+			
+		    newObject.rounds[i]['matches'] = newObject.rounds[i]['matches'].reverse();
+		}
+
+        if(newObject.hasOwnProperty["reversed"]){
+        	console.log('revr');
+          delete newObject['reversed']; 
+		   
+        }else{
+        	newObject['reversed'] = true;
+        }
+
+		return newObject;
+		/*for(var i=(newObject.rounds.length-1)-1; i<=0; i++){
+			 //testArr.push();
+			roudArr.push(newObject.rounds[i]);
+			for(var j=newObject.rounds[i].length-1; j){
+
+			}
+		  
+		}*/
+	 }
+	 
+	 return{
+	    sortResponse: sortResponse
+	 }
+});

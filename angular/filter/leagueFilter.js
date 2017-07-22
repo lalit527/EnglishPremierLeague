@@ -1,9 +1,13 @@
 //custom filter to hide repeated date
 leagueApp.filter( 'dateRepeat', ['changeArray', function(changeArray) {
 	var main = this;
-	return function( input ) {
+	return function( input, val, indx, pindx ) {
 	      var newData = '';
-		  if(changeArray. getArray(input)){
+	      //console.log('v'+val);
+	      /*console.log('in'+input);
+	      console.log('--'+indx);
+	      console.log('------'+pindx);*/
+		  if(changeArray.getArray(input)){
 			 newData = input;
 			 changeArray.setArray(input);
 		  }

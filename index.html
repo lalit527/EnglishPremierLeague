@@ -17,6 +17,7 @@
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Lobster+Two|Orbitron" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -25,9 +26,9 @@
     <![endif]-->
 </head>
 
-<body ng-controller="leagueController as leagueCtrl">
+<body>
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse fixed-scroll">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" id="btn-chg" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -36,12 +37,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <img src="http://i.telegraph.co.uk/multimedia/archive/03570/LOGO_MAIN_ONE_3570829b.jpg" 
+                     style="width:100px;height:50px;">
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active "><a href="#/">Home</a></li>
-                    <li class=""><a href="#table">Standing</a></li>
-                    <li><a class="" href="#">Project name</a></li>
+                    <li class="active "><a href="#/">Results &amp; Fixture</a></li>
+                    <li class=""><a href="#table">Table &amp; Results</a></li>
+                   
                 </ul>
             </div>
             <!--/.nav-collapse -->
